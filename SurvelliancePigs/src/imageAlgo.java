@@ -26,10 +26,7 @@ public class imageAlgo {
 	//check all values of red with all sat and val.
 	public void findRedCluster()
 	{
-		
-		
-		 
-		
+				
 	}
 	
 	public void detectDeadPig()
