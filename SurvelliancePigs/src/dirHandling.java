@@ -84,6 +84,11 @@ public class dirHandling{
 		return dir.getFileName();
 	}
 	
+	public int numberOfFiles()
+	{
+		return list.size();
+	}
+	
 	private void updateList() throws IOException
 	{
 		Files.walk(Paths.get(dir.toUri())).forEach(filePath -> {
