@@ -1,9 +1,15 @@
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import org.opencv.core.Core;
+import org.opencv.imgcodecs.Imgcodecs;
 
 
 
@@ -27,20 +33,31 @@ public class main {
 		
 		Iterator<dirHandling> nuvDir = a.iterator();
 		
-		while(true)
-		{
+		//while(true)
+		//{
 			
 			while(nuvDir.hasNext())
 			{
-				if(nuvDir.next().numberOfFiles() != 0)
+				dirHandling temp = nuvDir.next();
+				//kollar om filer finns
+				if(temp.numberOfFiles() != 0)
 				{
-					
+					Iterator<Path> p = temp.Iterator();
+					//gå igenom alla filer i directory
+					while(p.hasNext()){
+						String s = p.next().toString();
+						s = s.replace("\\", "/");
+						if(s.endsWith("jpg"))
+						{
+							imageAlgo image = new imageAlgo(Imgcodecs.imread("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K1/girl.jpg"));
+						}
+					}
 				}
 				
 				
 			}
-			nuvDir = a.iterator();
-		}
+			//nuvDir = a.iterator();
+		//}
 		
 	}
 	

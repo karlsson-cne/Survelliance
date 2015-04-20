@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.opencv.core.Mat;
+
 import static java.nio.file.StandardCopyOption.*;
 
 
@@ -88,6 +90,7 @@ public class dirHandling{
 	{
 		return list.size();
 	}
+	
 	
 	private void updateList() throws IOException
 	{
