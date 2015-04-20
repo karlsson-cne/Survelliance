@@ -18,6 +18,8 @@ public class imageAlgo {
 	public imageAlgo(Mat path)
 	{
 		 imageOrg = path;
+		 imagePro = new Mat();
+		 imageDebug = new Mat();
 		 Imgproc.cvtColor(imageOrg, imagePro, Imgproc.COLOR_BGR2HSV);
 		 
 	}

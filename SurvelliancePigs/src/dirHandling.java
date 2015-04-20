@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.opencv.core.Mat;
 
 import static java.nio.file.StandardCopyOption.*;
 

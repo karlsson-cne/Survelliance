@@ -20,10 +20,10 @@ public class main {
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		
 		
-		dirHandling p1 = new dirHandling("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K1");
-		dirHandling p2 = new dirHandling("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K2");
-		dirHandling p3 = new dirHandling("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K3");
-		dirHandling p4 = new dirHandling("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K4");
+		dirHandling p1 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K1");
+		dirHandling p2 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K2");
+		dirHandling p3 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K3");
+		dirHandling p4 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K4");
 		
 		ArrayList<dirHandling> a = new ArrayList<dirHandling>();
 		a.add(p1);
@@ -49,7 +49,10 @@ public class main {
 						s = s.replace("\\", "/");
 						if(s.endsWith("jpg"))
 						{
-							imageAlgo image = new imageAlgo(Imgcodecs.imread("C:/Users/Julia/Google Drive/Examensarbete2/Webbsida/K_Org/K1/girl.jpg"));
+							imageAlgo image = new imageAlgo(Imgcodecs.imread(s));
+							image.findRedCluster();
+							//göra resten av koden. 
+							
 						}
 					}
 				}
