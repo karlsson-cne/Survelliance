@@ -80,7 +80,7 @@ public class dirHandling{
 	 */
 	public Iterator<Path> Iterator()
 	{	
-		
+
 		return list.iterator();
 		
 	}
@@ -105,8 +105,10 @@ public class dirHandling{
 	}
 	
 	
-	private void updateList() throws IOException
+	public void updateList() throws IOException
 	{
+		
+		list.removeAll(list);
 		Files.walk(Paths.get(dir.toUri())).forEach(filePath -> {
 		    if (Files.isRegularFile(filePath)) {
 		        if(filePath.toString().endsWith("jpg"))list.add(filePath);

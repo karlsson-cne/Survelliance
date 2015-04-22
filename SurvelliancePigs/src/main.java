@@ -42,17 +42,24 @@ public class main {
 		    	 int nuvfile = 1;
 		    	 while(true)
 		    	 {
-		    	 
+		    		
 					while(nuvDir.hasNext())
 					{
 						dirHandling temp = nuvDir.next();
+						try {
+							temp.updateList();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						System.out.println(temp.getFileName(0));
+						
 						//kollar om filer finns
 						if(temp.numberOfFiles() != 0)
 						{
 							Iterator<Path> p = temp.Iterator();
 							
-							//gå igenom alla filer i directory
-							while(p.hasNext()){ 
+							//gå igenom en fil 
 									
 									//Bildbehandling
 									String s = p.next().toString();
@@ -70,43 +77,40 @@ public class main {
 									sb.append(".jpg");
 									dst = dst.replace("k_1.jpg", sb.toString());
 									try {
-										temp.copyFile(Paths.get(dst), nuvfile-1);
+										temp.copyFile(Paths.get(dst), 0);
 									} catch (IOException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
 									
-								}
 							//Ta bort filer här
 							
 							
-							for(int j = 0; j < temp.numberOfFiles(); j++)
-							{
 								String dstOld = "C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Old/K1/k_1.jpg";
-								String t = temp.getNameDir().toString();
 								t = temp.getNameDir().toString();
 								dstOld = dstOld.replace("K1", t);
-								StringBuilder sb = new StringBuilder();
+								sb = new StringBuilder();
 								sb.append("k_");
-								sb.append(j+1);
+								sb.append(nuvfile);
 								sb.append(".jpg");
 								dstOld = dstOld.replace("k_1.jpg", sb.toString());
 								try {
-									temp.moveFile(Paths.get(dstOld), j);
+									temp.moveFile(Paths.get(dstOld), 0);
 								} catch (IOException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
-								}
+							
 							}
 						}
 						
 						}
 					nuvfile++;
-					if(nuvfile > 4)nuvfile = 1;	
+					if(nuvfile > 4)nuvfile = 1;
 					nuvDir = a.iterator();
 					
+					
 					try {
-					    Thread.sleep(1000);
+					    Thread.sleep(50000);
 						//Thread.sleep(7200000);                 //2 * 60 * 60 *1000 sov i 2 timmar.
 					} catch(InterruptedException ex) {
 					    Thread.currentThread().interrupt();
