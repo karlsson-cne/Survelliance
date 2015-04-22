@@ -38,7 +38,11 @@ public class main {
 
 		     public void run() {
 		    	 Iterator<dirHandling> nuvDir = a.iterator();
-
+		    	 
+		    	 int nuvfile = 1;
+		    	 while(true)
+		    	 {
+		    	 
 					while(nuvDir.hasNext())
 					{
 						dirHandling temp = nuvDir.next();
@@ -46,7 +50,7 @@ public class main {
 						if(temp.numberOfFiles() != 0)
 						{
 							Iterator<Path> p = temp.Iterator();
-							int i = 0;
+							
 							//gå igenom alla filer i directory
 							while(p.hasNext()){ 
 									
@@ -62,16 +66,16 @@ public class main {
 									dst = dst.replace("K1", t);
 									StringBuilder sb = new StringBuilder();
 									sb.append("k_");
-									sb.append(i+1);
+									sb.append(nuvfile);
 									sb.append(".jpg");
 									dst = dst.replace("k_1.jpg", sb.toString());
 									try {
-										temp.copyFile(Paths.get(dst), i);
+										temp.copyFile(Paths.get(dst), nuvfile-1);
 									} catch (IOException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
-									i++;
+									
 								}
 							//Ta bort filer här
 							
@@ -96,17 +100,19 @@ public class main {
 							}
 						}
 						
-							
 						}
-						
+					nuvfile++;
+					if(nuvfile > 4)nuvfile = 1;	
 					nuvDir = a.iterator();
 					
 					try {
-					    Thread.sleep(7200000);                 //2 * 60 * 60 *1000 sov i 2 timmar.
+					    Thread.sleep(1000);
+						//Thread.sleep(7200000);                 //2 * 60 * 60 *1000 sov i 2 timmar.
 					} catch(InterruptedException ex) {
 					    Thread.currentThread().interrupt();
 					}
 					
+		     }
 		     }
 
 		});
