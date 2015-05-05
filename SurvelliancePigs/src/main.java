@@ -53,7 +53,7 @@ public class main {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						System.out.println(temp.getFileName(0));
+						
 						
 						//kollar om filer finns
 						if(temp.numberOfFiles() != 0)

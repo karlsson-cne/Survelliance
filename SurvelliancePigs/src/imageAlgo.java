@@ -23,8 +23,8 @@ public class imageAlgo {
 	private Mat imgThresholded;
 	
 	
-	 private int iLowH = 117;
-	 private int iHighH = 150;
+	 private int iLowH = 147;
+	 private int iHighH = 179;
 	 
 	 private int iLowS = 0; 
 	 private int iHighS = 255;
@@ -62,7 +62,11 @@ public class imageAlgo {
 		 Imgproc.findContours(imgTemp, contours, new Mat(), Imgproc.RETR_LIST,Imgproc.CHAIN_APPROX_SIMPLE);
 		 if(!contours.isEmpty())
 		 {
-			Imgproc.drawContours(imgOriginal, contours, -1, new Scalar(255,0,0),2, 0, new Mat(), 0, new Point(664,58)); 
+			 for( int i = 0; i< contours.size(); i++ )
+		     {
+		       Imgproc.drawContours(imgOriginal, contours, i, new Scalar(255,0,0),2, 0, new Mat(), 0, new Point(664,58));
+		     }
+			 
 		 	return imgOriginal;
 		 }
 		 else
