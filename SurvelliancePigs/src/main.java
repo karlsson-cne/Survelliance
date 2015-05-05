@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import org.opencv.core.Core;
+import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
 
@@ -64,20 +65,28 @@ public class main {
 									//Bildbehandling
 									String s = p.next().toString();
 									s = s.replace("\\", "/");
-									//imageAlgo image = new imageAlgo(Imgcodecs.imread(s));
-									//image.findRedCluster();
+									imageAlgo image = new imageAlgo(Imgcodecs.imread(s));
+									Mat Mtemp = image.findRedCluster();
 									
 									//Kopiering av fil
 									String t = temp.getNameDir().toString();
 									String dst = "C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K1/k_1.jpg";
+									String dstImg = "C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K1/k_b.jpg";
 									dst = dst.replace("K1", t);
+									dstImg = dstImg.replace("K1", t);
 									StringBuilder sb = new StringBuilder();
 									sb.append("k_");
 									sb.append(nuvfile);
 									sb.append(".jpg");
 									dst = dst.replace("k_1.jpg", sb.toString());
+									//spara bild om blod detekteras
+									if(!(Mtemp == null))
+									{
+										Imgcodecs.imwrite(dstImg, Mtemp);
+									}
 									try {
 										temp.copyFile(Paths.get(dst), 0);
+										
 									} catch (IOException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -104,6 +113,7 @@ public class main {
 						}
 						
 						}
+					//börja om då loopen gått 4 gånger
 					nuvfile++;
 					if(nuvfile > 4)nuvfile = 1;
 					nuvDir = a.iterator();
