@@ -11,7 +11,6 @@ import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 
@@ -20,11 +19,15 @@ public class imageAlgo {
 	
 	private Mat imgOriginal;
 	private Mat imgHSV;
+	private Mat imgThresholded2;
 	private Mat imgThresholded;
 	
 	
 	 private int iLowH = 147;
 	 private int iHighH = 179;
+	 
+	 private int iLowH2 = 2;
+	 private int iHighH2 = 2;
 	 
 	 private int iLowS = 0; 
 	 private int iHighS = 255;
@@ -37,6 +40,7 @@ public class imageAlgo {
 	{
 		 imgOriginal = path;
 		 imgHSV = imgOriginal.clone();
+		 imgThresholded2 = imgOriginal.clone();
 		 imgThresholded = imgOriginal.clone();
 		 
 	}
@@ -46,8 +50,9 @@ public class imageAlgo {
 		 Imgproc.cvtColor(imgOriginal, imgHSV, Imgproc.COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV	 
 		 
 		 Core.inRange(imgHSV, new Scalar(iLowH, iLowS, iLowV), new Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
-		      
+		 Core.inRange(imgHSV, new Scalar(iLowH2, iLowS, iLowV), new Scalar(iHighH2, iHighS, iHighV), imgThresholded2); //Threshold the image
 		 
+		 Core.bitwise_or(imgThresholded2, imgThresholded, imgThresholded);
 		 
 		 // Strukturelementet bestäms av datainsamling.
 		 //morphological closing (fill small holes in the foreground)
