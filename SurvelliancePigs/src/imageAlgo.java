@@ -21,6 +21,7 @@ public class imageAlgo {
 	private Mat imgHSV;
 	private Mat imgThresholded2;
 	private Mat imgThresholded;
+	private int type;
 	
 	
 	 private int iLowH = 147;
@@ -42,11 +43,16 @@ public class imageAlgo {
 		 imgHSV = imgOriginal.clone();
 		 imgThresholded2 = imgOriginal.clone();
 		 imgThresholded = imgOriginal.clone();
+		 type = path.type();
 		 
 	}
 	//check all values of red with all sat and val.
 	public Mat findRedCluster()
 	{
+		//kolla om gråskala
+		if(true == true)
+		{
+			
 		 Imgproc.cvtColor(imgOriginal, imgHSV, Imgproc.COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV	 
 		 
 		 Core.inRange(imgHSV, new Scalar(iLowH, iLowS, iLowV), new Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
@@ -78,6 +84,11 @@ public class imageAlgo {
 		 {
 			 return null;
 		 }
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 

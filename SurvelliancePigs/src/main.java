@@ -18,16 +18,14 @@ public class main {
 		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
 		
 		
-		dirHandling p1 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K1");
-		dirHandling p2 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K2");
-		dirHandling p3 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K3");
-		dirHandling p4 = new dirHandling("C:/Users/Julia/GoogleDrive/Examensarbete2/Webbsida/K_Org/K4");
+		dirHandling p1 = new dirHandling("C:/Users/Julia/Desktop/KameraUtexpo/K1");
+		//dirHandling p2 = new dirHandling("C:/Users/Julia/Desktop/KameraUtexpo/K2");
+
 		
 		ArrayList<dirHandling> a = new ArrayList<dirHandling>();
 		a.add(p1);
-		a.add(p2);
-		a.add(p3);
-		a.add(p4);
+		//a.add(p2);
+
 		
 		
 		
@@ -109,14 +107,14 @@ public class main {
 						}
 						
 						}
-					//börja om då loopen gått 4 gånger
+					//börja om då loopen gått 4 gånger för fyra bilder skall visas
 					nuvfile++;
 					if(nuvfile > 4)nuvfile = 1;
 					nuvDir = a.iterator();
 					
 					
 					try {
-					    Thread.sleep(50000);
+					    Thread.sleep(1000);
 						//Thread.sleep(7200000);                 //2 * 60 * 60 *1000 sov i 2 timmar.
 					} catch(InterruptedException ex) {
 					    Thread.currentThread().interrupt();
