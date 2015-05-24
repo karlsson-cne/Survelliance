@@ -114,7 +114,7 @@ public class main {
 					
 					
 					try {
-					    Thread.sleep(1000);
+					    Thread.sleep(60*1000);
 						//Thread.sleep(7200000);                 //2 * 60 * 60 *1000 sov i 2 timmar.
 					} catch(InterruptedException ex) {
 					    Thread.currentThread().interrupt();
